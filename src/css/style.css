@@ -176,8 +176,17 @@ button {
 }
 
 .cart-total-indicator {
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: -5px;
 }
 
 .hide {

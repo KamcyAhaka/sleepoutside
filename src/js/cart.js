@@ -12,7 +12,7 @@ function displayCartTotal(cartItems) {
 
 
   // Output values
-  cartItemTotalIndicator.textContent = `${cartItems.length} ${cartItems.length <= 1 ? 'item' : 'items'} in cart`
+  cartItemTotalIndicator.textContent = cartItems.length
   cartPriceTotalIndicator.textContent = `$${totalPrice}`
 }
 
