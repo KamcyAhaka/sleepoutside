@@ -175,6 +175,15 @@ button {
   align-items: center;
 }
 
+.cart-total-indicator {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.hide {
+  display: none;
+}
+
 .cart-card__image {
   grid-row: 1/3;
   grid-column: 1;
