@@ -1,17 +1,17 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, displayTotalItemInCart } from "./utils.mjs";
 
-function displayCartTotal(cartItems) {
-  const cartItemTotalIndicator = document.querySelector("#cart-total");
+await loadHeaderFooter()
+
+displayTotalItemInCart()
+
+function displayCartTotal() {
+  const cartItems = getLocalStorage("so-cart");
   const cartPriceTotalIndicator = document.querySelector("#cart-price-total");
 
-  // Show elements
-  cartItemTotalIndicator.classList.remove("hide");
   cartPriceTotalIndicator.classList.remove("hide");
 
   const totalPrice = calculateCartTotalPrice(cartItems);
 
-  // Output values
-  cartItemTotalIndicator.textContent = cartItems.length;
   cartPriceTotalIndicator.textContent = `$${totalPrice}`;
 }
 
@@ -27,9 +27,9 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   if (cartItems && cartItems.length > 0) {
     displayCartTotal(cartItems);
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
   }
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
 function cartItemTemplate(item) {
