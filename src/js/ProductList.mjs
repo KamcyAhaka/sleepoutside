@@ -30,7 +30,6 @@ export default class ProductListing {
   }
 
   renderList(list) {
-    console.log(filteredList(list));
     renderListWithTemplate(productCardTemplate, this.listElement, filteredList(list))
   }
 }

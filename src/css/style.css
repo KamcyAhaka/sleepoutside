@@ -190,7 +190,7 @@ button {
 }
 
 .hide {
-  display: none;
+  opacity: 0;
 }
 
 .cart-card__image {
