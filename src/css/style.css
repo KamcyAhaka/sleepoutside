@@ -129,6 +129,31 @@ button {
   list-style-type: none;
   padding: 0;
 }
+
+.product-list-grid {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: repeat(2, 1fr);
+  font-size: 13px;
+}
+
+.product-list-grid li {
+  list-style: none;
+
+}
+
+.product-list-grid a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.product-list-grid img {
+  max-width: 100px;
+}
+
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
@@ -231,6 +256,10 @@ button {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
+  }
+
+  .product-list-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
