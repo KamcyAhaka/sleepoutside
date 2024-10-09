@@ -1,26 +1,17 @@
-import { getLocalStorage, loadHeaderFooter, displayTotalItemInCart } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, displayTotalItemInCart, calculateCartTotalPrice } from "./utils.mjs";
 
 await loadHeaderFooter()
 
 displayTotalItemInCart()
 
 function displayCartTotal() {
-  const cartItems = getLocalStorage("so-cart");
   const cartPriceTotalIndicator = document.querySelector("#cart-price-total");
 
   cartPriceTotalIndicator.classList.remove("hide");
 
-  const totalPrice = calculateCartTotalPrice(cartItems);
+  const totalPrice = calculateCartTotalPrice();
 
   cartPriceTotalIndicator.textContent = `$${totalPrice}`;
-}
-
-function calculateCartTotalPrice(cartItems) {
-  const totalPrice = cartItems.reduce((total, item) => {
-    return total + item.FinalPrice;
-  }, 0);
-
-  return totalPrice;
 }
 
 function renderCartContents() {
