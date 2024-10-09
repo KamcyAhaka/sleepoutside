@@ -38,6 +38,15 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, templateStrings.join(""));
 }
 
+export function calculateCartTotalPrice() {
+  const cartItems = getLocalStorage("so-cart");
+  const totalPrice = cartItems.reduce((total, item) => {
+    return total + item.FinalPrice;
+  }, 0);
+
+  return totalPrice;
+}
+
 
 export function displayTotalItemInCart() {
   const cartItems = getLocalStorage("so-cart");

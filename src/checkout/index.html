@@ -20,7 +20,7 @@
 
   <link
     rel="stylesheet"
-    href="css/style.css"
+    href="../css/style.css"
   />
 </head>
 
@@ -34,6 +34,82 @@
   <main class="divider">
     <section class="products">
       <h2>Review & Place your Order</h2>
+      <form action="">
+        <div class="input-container">
+          <label for="customerName">Full Name</label>
+          <input
+            required="true"
+            type="text"
+            id="customerName"
+            placeholder="John Doe"
+          >
+        </div>
+        <div class="input-container">
+          <label for="streetAddress">Street Address</label>
+          <input
+            required="true"
+            type="text"
+            id="streetAddress"
+          >
+        </div>
+        <div class="input-container">
+          <label for="cityInput">City</label>
+          <input
+            required="true"
+            type="text"
+            id="cityInput"
+          >
+        </div>
+        <div class="input-container">
+          <label for="stateInput">State</label>
+          <input
+            required="true"
+            type="text"
+            id="stateInput"
+          >
+        </div>
+        <div class="input-container">
+          <label for="zipCode">Zip code</label>
+          <input
+            required="true"
+            type="text"
+            id="zipCode"
+          >
+        </div>
+        <hr>
+        <div class="input-container">
+          <label for="creditCardNumber">Credit card number</label>
+          <input
+            required="true"
+            type="number"
+            id="creditCardNumber"
+          >
+        </div>
+        <div class="input-container">
+          <label for="expirationDate">Expiration Date</label>
+          <input
+            required="true"
+            type="date"
+            id="expirationDate"
+          >
+        </div>
+        <div class="input-container">
+          <label for="securityCode">Security code</label>
+          <input
+            required="true"
+            type="number"
+            id="securityCode"
+          >
+        </div>
+        <button type="submit">Proceed to payment</button>
+      </form>
+      <div class="checkout-summary">
+        <p>Subtotal: <span id="subtotal-price"></span></p>
+        <p>Shipping Estimate: <span id="shipping-estimate"></span></p>
+        <p>Tax: <span id="tax"></span></p>
+        <p>Order: <span id="order"></span></p>
+
+      </div>
     </section>
   </main>
 
