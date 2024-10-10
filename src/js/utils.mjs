@@ -5,6 +5,16 @@ export function qs(selector, parent = document) {
 // or a more concise version if you are into that sort of thing:
 // export const qs = (selector, parent = document) => parent.querySelector(selector);
 
+export function formDataToJSON(formInputs) {
+  const convertedJSON = {};
+  
+  formInputs.forEach(input => {
+    convertedJSON[input.id] = input.value;
+  });
+
+  return convertedJSON;
+}
+
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -47,9 +57,11 @@ export function calculateCartTotalPrice() {
   return totalPrice;
 }
 
-
 export function displayTotalItemInCart() {
   const cartItems = getLocalStorage("so-cart");
+  if (!cartItems) {
+    return
+  }
   const cartItemTotalIndicator = document.querySelector("#cart-total");
   cartItemTotalIndicator.classList.remove("hide");
   cartItemTotalIndicator.textContent = cartItems.length;
@@ -60,6 +72,11 @@ export function renderWithTemplate(template, parentElement, data, callback) {
   if(callback) {
     callback(data);
   }
+}
+
+export function capitalizeFirstLetter(word) {
+  if (!word) return '';
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
 async function loadTemplate(path) {
