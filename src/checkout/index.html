@@ -34,74 +34,90 @@
   <main class="divider">
     <section class="products">
       <h2>Review & Place your Order</h2>
-      <form action="">
+      <form
+        action=""
+        id="checkout-form"
+      >
         <div class="input-container">
-          <label for="customerName">Full Name</label>
+          <label for="fname">First Name</label>
           <input
             required="true"
             type="text"
-            id="customerName"
-            placeholder="John Doe"
+            id="fname"
+            placeholder="John"
           >
         </div>
         <div class="input-container">
-          <label for="streetAddress">Street Address</label>
+          <label for="lname">Last Name</label>
           <input
             required="true"
             type="text"
-            id="streetAddress"
+            id="lname"
+            placeholder="Doe"
           >
         </div>
         <div class="input-container">
-          <label for="cityInput">City</label>
+          <label for="street">Street Address</label>
           <input
             required="true"
             type="text"
-            id="cityInput"
+            id="street"
           >
         </div>
         <div class="input-container">
-          <label for="stateInput">State</label>
+          <label for="city">City</label>
           <input
             required="true"
             type="text"
-            id="stateInput"
+            id="city"
           >
         </div>
         <div class="input-container">
-          <label for="zipCode">Zip code</label>
+          <label for="state">State</label>
           <input
             required="true"
             type="text"
-            id="zipCode"
+            id="state"
+          >
+        </div>
+        <div class="input-container">
+          <label for="zip">Zip code</label>
+          <input
+            required="true"
+            type="text"
+            id="zip"
           >
         </div>
         <hr>
         <div class="input-container">
-          <label for="creditCardNumber">Credit card number</label>
+          <label for="cardNumber">Credit card number</label>
           <input
             required="true"
             type="number"
-            id="creditCardNumber"
+            id="cardNumber"
           >
         </div>
         <div class="input-container">
-          <label for="expirationDate">Expiration Date</label>
+          <label for="expiration">Expiration Date</label>
+          <!-- Using an input of type 'month' makes the checkout request fail -->
           <input
             required="true"
-            type="date"
-            id="expirationDate"
+            type="text"
+            id="expiration"
           >
         </div>
         <div class="input-container">
-          <label for="securityCode">Security code</label>
+          <label for="code">Security code</label>
           <input
             required="true"
             type="number"
-            id="securityCode"
+            id="code"
           >
         </div>
-        <button type="submit">Proceed to payment</button>
+        <button
+          type="submit"
+          id="checkout-btn"
+        >Proceed to payment</button>
       </form>
       <div class="checkout-summary">
         <p>Subtotal: <span id="subtotal-price"></span></p>
