@@ -79,7 +79,6 @@ export default class CheckoutProcess{
     checkoutObject.tax = this.tax
     checkoutObject.items = packageItem(cartItems)
 
-    console.log(checkoutObject);
     await services.checkout(checkoutObject)
   }
 }
