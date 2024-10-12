@@ -1,4 +1,8 @@
 import { loadHeaderFooter, displayTotalItemInCart } from './utils.mjs'
 
-await loadHeaderFooter()
-displayTotalItemInCart()
+async function init() {
+  await loadHeaderFooter()
+  displayTotalItemInCart()
+}
+
+init()

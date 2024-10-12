@@ -2,8 +2,12 @@ import ExternalServices from './ExternalServices.mjs'
 import ProductListing from './ProductList.mjs'
 import { loadHeaderFooter, displayTotalItemInCart, getParams } from './utils.mjs'
 
-await loadHeaderFooter()
-displayTotalItemInCart()
+async function init() {
+  await loadHeaderFooter()
+  displayTotalItemInCart()
+}
+
+init()
 
 const category = getParams("category");
 const dataSource = new ExternalServices()

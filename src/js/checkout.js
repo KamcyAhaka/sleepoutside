@@ -1,8 +1,12 @@
 import { loadHeaderFooter, displayTotalItemInCart, getLocalStorage } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess";
 
-await loadHeaderFooter();
-displayTotalItemInCart()
+async function init() {
+  await loadHeaderFooter()
+  displayTotalItemInCart()
+}
+
+init()
 
 const checkoutProcess = new CheckoutProcess()
 const checkoutForm = document.querySelector('#checkout-form')
