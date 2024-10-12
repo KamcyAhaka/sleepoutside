@@ -158,6 +158,36 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+.price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-card__suggestedRetailPrice {
+  position: relative;
+}
+
+.product-card__suggestedRetailPrice::before, .product-card__suggestedRetailPrice::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 2px;
+  height: 150%;
+  background-color: red;
+  left: 50%;
+  transform-origin: center;
+}
+
+.product-card__suggestedRetailPrice::before {
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.product-card__suggestedRetailPrice::after {
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
