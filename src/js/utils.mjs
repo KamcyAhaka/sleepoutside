@@ -54,7 +54,7 @@ export function calculateCartTotalPrice() {
     return total + item.FinalPrice;
   }, 0);
 
-  return totalPrice;
+  return +totalPrice.toFixed(2);
 }
 
 export function displayTotalItemInCart() {
