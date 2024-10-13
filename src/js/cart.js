@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter, displayTotalItemInCart, calculateCartTotalPrice, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, displayTotalItemInCart, calculateCartTotalPrice, setLocalStorage, incrementItemQuantity } from "./utils.mjs";
 
 async function init() {
   await loadHeaderFooter()
@@ -9,6 +9,7 @@ init()
 
 function attachEventListeners() {
   const deleteBtns = document.querySelectorAll('.delete-button')
+  const incrementBtns = document.querySelectorAll('.increase-quantity-button')
 
   deleteBtns.forEach(button => {
     button.addEventListener('click', () => {
@@ -16,6 +17,16 @@ function attachEventListeners() {
       deleteItemFromCart(itemIndex);
     })
   });
+
+  incrementBtns.forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.getAttribute('data-id');
+      let cartItems = getLocalStorage('so-cart') || [];
+      incrementItemQuantity(cartItems, productId)
+      displayTotalItemInCart();
+      renderCartContents();
+    })
+  })
 }
   
 function deleteItemFromCart(index) {
@@ -29,6 +40,8 @@ function deleteItemFromCart(index) {
 
   // Save the updated cart back to localStorage
   setLocalStorage("so-cart", cartItems);
+
+  displayTotalItemInCart()
 
   // setLocalStorage('so-cart', newCartItems)
   renderCartContents()
@@ -46,7 +59,7 @@ function displayCartTotal() {
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  if (cartItems && cartItems.length > 0) {
+  if (cartItems) {
     displayCartTotal(cartItems);
     const htmlItems = cartItems.map((item, index) => cartItemTemplate(item, index));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
@@ -66,11 +79,16 @@ function cartItemTemplate(item, index) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: ${item.quantity}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
-  <button class="delete-button" data-index="${index}">
-    <img src="/images/trash-can.svg" />
-  </button>
+  <div class="cart-btn-container">
+    <button class="delete-button" data-index="${index}">
+      <img src="/images/trash-can.svg" />
+    </button>
+    <button class="increase-quantity-button" data-id="${item.Id}">
+      +
+    </button>
+  </div>
 </li>`;
 
   return newItem;

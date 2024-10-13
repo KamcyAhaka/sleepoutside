@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from './utils.mjs'
+import { displayTotalItemInCart, getLocalStorage, setLocalStorage, incrementItemQuantity } from './utils.mjs'
 
 function createProductDetailTemplate(product) {
   return `<h3>${product.Brand.Name}</h3>
@@ -17,6 +17,9 @@ function createProductDetailTemplate(product) {
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div>`;
 }
+
+// Function to increment quantity of an item in the cart
+
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -43,11 +46,21 @@ export default class ProductDetails {
     // If cartItems is not an array, initialize it as an empty array
     cartItems = Array.isArray(cartItems) ? cartItems : [];
 
-    // Add the new product to the cart array
-    cartItems.push(this.product);
+    // Check if the item is already in the cart
+    const existingItem = cartItems.find(cartItem => cartItem.Id === this.product.Id);
 
-    // Save the updated cart array back to localStorage
+    if (existingItem) {
+      // If item exists, increment the quantity
+      cartItems = incrementItemQuantity(cartItems, this.product.Id);
+    } else {
+      // Add a new item with quantity set to 1
+      this.product.quantity = 1;
+      cartItems.push(this.product);
+    }
+
+    // Save the updated cart to localStorage
     setLocalStorage("so-cart", cartItems);
+    displayTotalItemInCart()
   }
   renderProductDetails(parentSelector) {
     const parentElement = document.querySelector(parentSelector)
