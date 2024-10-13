@@ -33,87 +33,97 @@
 
   <main class="divider">
     <section class="products">
+      <div class="alert-container">
+
+      </div>
       <h2>Review & Place your Order</h2>
       <form
         action=""
         id="checkout-form"
       >
-        <div class="input-container">
-          <label for="fname">First Name</label>
-          <input
-            required="true"
-            type="text"
-            id="fname"
-            placeholder="John"
-          >
-        </div>
-        <div class="input-container">
-          <label for="lname">Last Name</label>
-          <input
-            required="true"
-            type="text"
-            id="lname"
-            placeholder="Doe"
-          >
-        </div>
-        <div class="input-container">
-          <label for="street">Street Address</label>
-          <input
-            required="true"
-            type="text"
-            id="street"
-          >
-        </div>
-        <div class="input-container">
-          <label for="city">City</label>
-          <input
-            required="true"
-            type="text"
-            id="city"
-          >
-        </div>
-        <div class="input-container">
-          <label for="state">State</label>
-          <input
-            required="true"
-            type="text"
-            id="state"
-          >
-        </div>
-        <div class="input-container">
-          <label for="zip">Zip code</label>
-          <input
-            required="true"
-            type="text"
-            id="zip"
-          >
-        </div>
+        <fieldset>
+          <legend>Personal Information</legend>
+          <div class="input-container">
+            <label for="fname">First Name</label>
+            <input
+              required="true"
+              type="text"
+              id="fname"
+              placeholder="John"
+            >
+          </div>
+          <div class="input-container">
+            <label for="lname">Last Name</label>
+            <input
+              required="true"
+              type="text"
+              id="lname"
+              placeholder="Doe"
+            >
+          </div>
+          <div class="input-container">
+            <label for="street">Street Address</label>
+            <input
+              required="true"
+              type="text"
+              id="street"
+            >
+          </div>
+          <div class="input-container">
+            <label for="city">City</label>
+            <input
+              required="true"
+              type="text"
+              id="city"
+            >
+          </div>
+          <div class="input-container">
+            <label for="state">State</label>
+            <input
+              required="true"
+              type="text"
+              id="state"
+            >
+          </div>
+          <div class="input-container">
+            <label for="zip">Zip code</label>
+            <input
+              required="true"
+              type="text"
+              id="zip"
+            >
+          </div>
+        </fieldset>
+
         <hr>
-        <div class="input-container">
-          <label for="cardNumber">Credit card number</label>
-          <input
-            required="true"
-            type="number"
-            id="cardNumber"
-          >
-        </div>
-        <div class="input-container">
-          <label for="expiration">Expiration Date</label>
-          <!-- Using an input of type 'month' makes the checkout request fail -->
-          <input
-            required="true"
-            type="text"
-            id="expiration"
-          >
-        </div>
-        <div class="input-container">
-          <label for="code">Security code</label>
-          <input
-            required="true"
-            type="number"
-            id="code"
-          >
-        </div>
+        <fieldset>
+          <legend>Payment Information</legend>
+          <div class="input-container">
+            <label for="cardNumber">Credit card number</label>
+            <input
+              required="true"
+              type="number"
+              id="cardNumber"
+            >
+          </div>
+          <div class="input-container">
+            <label for="expiration">Expiration Date</label>
+            <!-- Using an input of type 'month' makes the checkout request fail -->
+            <input
+              required="true"
+              type="text"
+              id="expiration"
+            >
+          </div>
+          <div class="input-container">
+            <label for="code">Security code</label>
+            <input
+              required="true"
+              type="number"
+              id="code"
+            >
+          </div>
+        </fieldset>
         <button
           type="submit"
           id="checkout-btn"

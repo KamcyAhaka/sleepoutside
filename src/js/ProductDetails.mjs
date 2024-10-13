@@ -51,7 +51,6 @@ export default class ProductDetails {
   }
   renderProductDetails(parentSelector) {
     const parentElement = document.querySelector(parentSelector)
-    console.log(this.product);
     parentElement.innerHTML = createProductDetailTemplate(this.product)
   }
 }
