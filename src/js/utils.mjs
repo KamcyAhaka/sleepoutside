@@ -95,3 +95,41 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+function attachAlertEventListeners() {
+  const alertBtns = document.querySelectorAll('.alert__delete-btn')
+  const alertContainer = document.querySelector('.alert-container')
+
+  alertBtns.forEach(alertBtn => {
+    alertBtn.addEventListener('click', event => {
+      const targetBtn = event.target
+      const parentAlert = targetBtn.closest('.alert')
+      alertContainer.removeChild(parentAlert)
+    })
+  });
+}
+
+export function alertMessageTemplate(message) {
+  const alert = `
+    <div class="alert">
+      <p class="alert__text">${message}</p>
+      <button class="alert__delete-btn">X</button>
+    </div>
+  `;
+
+  return alert
+}
+
+export function alertMessage(message, scroll = true) {
+  // create element to hold our alert
+  const alertContainer = document.querySelector('.alert-container');
+
+  alertContainer.insertAdjacentHTML('afterbegin', alertMessageTemplate(message))
+
+  attachAlertEventListeners()
+
+  // make sure they see the alert by scrolling to the top of the window
+  //we may not always want to do this...so default to scroll=true, but allow it to be passed in and overridden.
+  if(scroll)
+    window.scrollTo(0,0);
+}

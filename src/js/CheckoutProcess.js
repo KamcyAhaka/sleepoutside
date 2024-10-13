@@ -35,8 +35,8 @@ export default class CheckoutProcess{
 
   calculateShipping() {
     const baseValue = 10
-    let shippingValue = baseValue
     const cartItems = getLocalStorage('so-cart')
+    let shippingValue = cartItems.length > 0 ? baseValue : 0
     if (cartItems.length === 1) {
       return
     }
@@ -79,6 +79,11 @@ export default class CheckoutProcess{
     checkoutObject.tax = this.tax
     checkoutObject.items = packageItem(cartItems)
 
-    await services.checkout(checkoutObject)
+    try {
+      await services.checkout(checkoutObject)
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 }

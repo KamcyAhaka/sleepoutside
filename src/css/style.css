@@ -275,6 +275,56 @@ button {
   grid-column: 3;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input {
+  padding: .5em .75em;
+}
+
+.alert-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 .5em;
+  background-color: #F0A968;
+}
+
+.alert:first-of-type {
+  border-bottom: #FF8D00 2px solid;
+}
+
+.alert__delete-btn {
+  padding: 0;
+  margin: 0;
+  background: none;
+  color: black;
+}
+
+.success-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

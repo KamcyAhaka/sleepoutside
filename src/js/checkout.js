@@ -1,4 +1,4 @@
-import { loadHeaderFooter, displayTotalItemInCart, getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter, displayTotalItemInCart } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess";
 
 async function init() {
@@ -7,6 +7,13 @@ async function init() {
 }
 
 init()
+
+function renderAlertTemplate(message) {
+  return `
+    <p>${message}</p>
+    <button>X</button>
+  `
+}
 
 const checkoutProcess = new CheckoutProcess()
 const checkoutForm = document.querySelector('#checkout-form')
@@ -20,7 +27,11 @@ function handleCheckoutFormSubmit(event) {
   const formElements = [...checkoutForm.elements]
   const formInputs = formElements.filter((element) => element.tagName === 'INPUT')
 
-  checkoutProcess.checkout(formInputs)
+  if (checkoutForm.checkValidity()) {
+    checkoutProcess.checkout(formInputs)
+  } else {
+    checkoutForm.reportValidity()
+  }
 }
 
 // Attach event listener to the form submit button

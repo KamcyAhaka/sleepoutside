@@ -2,8 +2,12 @@ import { getParams, loadHeaderFooter, displayTotalItemInCart } from "./utils.mjs
 import ExternalServices from "./ExternalServices.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 
-await loadHeaderFooter();
-displayTotalItemInCart()
+async function init() {
+  await loadHeaderFooter()
+  displayTotalItemInCart()
+}
+
+init()
 
 const productId = getParams('product');
 
