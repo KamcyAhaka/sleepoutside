@@ -51,7 +51,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 export function calculateCartTotalPrice() {
   const cartItems = getLocalStorage("so-cart");
   const totalPrice = cartItems.reduce((total, item) => {
-    return total + item.FinalPrice;
+    return total + (item.FinalPrice * item.quantity);
   }, 0);
 
   return +totalPrice.toFixed(2);
@@ -64,7 +64,13 @@ export function displayTotalItemInCart() {
   }
   const cartItemTotalIndicator = document.querySelector("#cart-total");
   cartItemTotalIndicator.classList.remove("hide");
-  cartItemTotalIndicator.textContent = cartItems.length;
+
+  // Calculate the total number of items by summing up the quantities
+  const totalItems = cartItems.reduce((total, item) => {
+    return total + (item.quantity || 1);  // Default to 1 if quantity isn't present for any item
+  }, 0);
+
+  cartItemTotalIndicator.textContent = totalItems;
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
@@ -130,6 +136,17 @@ export function alertMessage(message, scroll = true) {
 
   // make sure they see the alert by scrolling to the top of the window
   //we may not always want to do this...so default to scroll=true, but allow it to be passed in and overridden.
-  if(scroll)
-    window.scrollTo(0,0);
+  if (scroll)
+    window.scrollTo(0, 0);
+}
+
+export function incrementItemQuantity(cart, productId) {
+  cart = cart.map((cartItem) => {
+    if (cartItem.Id === productId) {
+      cartItem.quantity = cartItem.quantity ? cartItem.quantity + 1 : 2; // If quantity exists, increment it. If not, set to 2 (since it was already in the cart).
+    }
+    return cartItem;
+  });
+  setLocalStorage('so-cart', cart)
+  return cart;
 }
